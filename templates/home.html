@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    body {
+      background-color: #f9f9f9;
+      font-family: Arial, sans-serif;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+
+    .login {
+      width: 400px;
+      margin: 0 auto;
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px 0px #000000;
+    }
+
+    h1 {
+      color: #4CAF50;
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #007bff;
+    }
+
+    form {
+      margin-bottom: 20px;
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+
+    .mb-3 {
+      margin-bottom: 10px;
+    }
+
+    .form-label {
+      font-weight: bold;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .btn-primary {
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+
+    .btn-primary:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login">
+    <h1>Mobile Phone Price Range Predictor</h1>
+
+    <form action="{{ url_for('predict_datapoint')}}" method="post">
+      <h1>
+        <legend>Mobile Phone Price Range Prediction</legend>
+      </h1>
+      <div class="mb-3">
+        <label class="form-label">Battery Power</label>
+        <input class="form-control" type="number" name="battery_power" placeholder="Enter Battery Power" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Bluetooth (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="blue" placeholder="Enter Bluetooth" min="0" max="1" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Clock Speed</label>
+        <input class="form-control" type="number" name="clock_speed" placeholder="Enter Clock Speed" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Dual SIM (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="dual_sim" placeholder="Enter Dual SIM" min="0" max="1"
+          required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Front Camera (fc)</label>
+        <input class="form-control" type="number" name="fc" placeholder="Enter Front Camera value" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">4G (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="four_g" placeholder="Enter 4G" min="0" max="1" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mobile Depth (m_dep)</label>
+        <input class="form-control" type="number" name="m_dep" placeholder="Enter Mobile Depth" required />
+    </div>    
+      <div class="mb-3">
+        <label class="form-label">Internal Memory</label>
+        <input class="form-control" type="number" name="int_memory" placeholder="Enter Internal Memory" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mobile Weight</label>
+        <input class="form-control" type="number" name="mobile_wt" placeholder="Enter Mobile Weight" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Number of Cores</label>
+        <input class="form-control" type="number" name="n_cores" placeholder="Enter Number of Cores" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Primary Camera (pc)</label>
+        <input class="form-control" type="number" name="pc" placeholder="Enter Primary Camera value" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pixel Height</label>
+        <input class="form-control" type="number" name="px_height" placeholder="Enter Pixel Height" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Pixel Width</label>
+        <input class="form-control" type="number" name="px_width" placeholder="Enter Pixel Width" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">RAM</label>
+        <input class="form-control" type="number" name="ram" placeholder="Enter RAM" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Screen Height (sc_h)</label>
+        <input class="form-control" type="number" name="sc_h" placeholder="Enter Screen Height value" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Screen Width (sc_w)</label>
+        <input class="form-control" type="number" name="sc_w" placeholder="Enter Screen Width value" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Talk Time</label>
+        <input class="form-control" type="number" name="talk_time" placeholder="Enter Talk Time" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">3G (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="three_g" placeholder="Enter 3G" min="0" max="1" required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Touch Screen (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="touch_screen" placeholder="Enter Touch Screen" min="0" max="1"
+          required />
+      </div>
+      <div class="mb-3">
+        <label class="form-label">WiFi (0 for No, 1 for Yes)</label>
+        <input class="form-control" type="number" name="wifi" placeholder="Enter WiFi" min="0" max="1" required />
+      </div>
+
+      <div class="mb-3">
+        <input class="btn btn-primary" type="submit" value="Predict Price Range" required />
+      </div>
+    </form>
+
+    <h2>The predicted price range is: {{results}}</h2>
+  </div>
+</body>
+
+</html>
